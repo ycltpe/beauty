@@ -2,26 +2,19 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css';
 
-import mediumZoom from 'medium-zoom';
-import { onMounted, watch, nextTick } from 'vue';
-import { useRoute } from 'vitepress';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export default {
   extends: DefaultTheme,
-
-  setup() {
-    const route = useRoute();
-    const initZoom = () => {
-      // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
-      mediumZoom('.beauty-img-grid img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
-    };
-    onMounted(() => {
-      initZoom();
-    });
-    watch(
-      () => route.path,
-      () => nextTick(() => initZoom())
-    );
+  
+  enhanceApp({ app }) {
+    // 注册 Swiper 组件
+    app.component('Swiper', Swiper);
+    app.component('SwiperSlide', SwiperSlide);
   },
 
 }
