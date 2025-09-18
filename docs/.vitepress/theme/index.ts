@@ -2,8 +2,7 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css';
 
-import 'swiper/swiper-bundle.css';
-import Swiper from 'swiper';
+import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
 
@@ -12,32 +11,16 @@ export default {
 
   setup() {
     const route = useRoute();
-    const initSwiper = () => {
-      // 销毁已存在的 Swiper 实例，避免重复初始化
-      if (window.__beautySwiper) {
-        window.__beautySwiper.destroy(true, true);
-      }
-      // 初始化 Swiper
-      const grid = document.querySelector('.beauty-img-grid');
-      if (grid) {
-        window.__beautySwiper = new Swiper(grid, {
-          direction: 'vertical',
-          slidesPerView: 1,
-          spaceBetween: 12,
-          mousewheel: true,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-        });
-      }
+    const initZoom = () => {
+      // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
+      mediumZoom('.beauty-img-grid img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
     };
     onMounted(() => {
-      initSwiper();
+      initZoom();
     });
     watch(
       () => route.path,
-      () => nextTick(() => initSwiper())
+      () => nextTick(() => initZoom())
     );
   },
 
