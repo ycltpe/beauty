@@ -184,12 +184,7 @@
   transform: scale(1.1);
 }
 
-/* 容器自定义 */
-.container[data-v-3338b8c6],
-.container[data-v-d70c61be] {
-  margin: 0;
-  max-width: 100%;
-}
+
 
 /* 图片计数显示 */
 .swiper-counter {
@@ -272,4 +267,19 @@
   .beauty-swiper .swiper-button-prev::after {
     font-size: 16px;
   }
+}
+
+/* 容器自定义 - 全局选择器 */
+:global(.container) {
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+/* 备用方案：直接全局选择器 */
+.VPContent .container,
+.VPDoc .container,
+.VPNav .container,
+div.container {
+  margin: 0;
+  max-width: 100%;
 }

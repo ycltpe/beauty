@@ -60,19 +60,19 @@ const currentSlideIndex = ref(0)
 let swiperInstance = null
 
 const images = [
-  { src: '/images/2.jpeg', alt: '2.jpeg' },
-  { src: '/images/Girl-play-swing-silhouette-tree-sea-sun_1920x1200.jpeg', alt: 'Girl-play-swing' },
-  { src: '/images/newcity.jpeg', alt: 'newcity' },
-  { src: '/images/Red-tulips-flowers-macro-photography_1920x1200.jpeg', alt: 'Red-tulips' },
-  { src: '/images/Russia-temple-river-trees-sunset_1920x1200.jpeg', alt: 'Russia-temple' },
-  { src: '/images/San-Marino-tower-monument-statue-sunshine_1920x1200.jpeg', alt: 'San-Marino-tower' },
-  { src: '/images/Spain-Asturias-mountains-lake-clouds-morning_1920x1200.jpeg', alt: 'Spain-Asturias' },
-  { src: '/images/Spain-Barcelona-interior-people_1920x1200.jpeg', alt: 'Spain-Barcelona' },
-  { src: '/images/Starfish-sea-beach-foam-sun_3840x2160.jpeg', alt: 'Starfish-sea' },
-  { src: '/images/Three-white-puppies-Labrador-Retriever_1920x1200.jpeg', alt: 'Three-white-puppies' },
-  { src: '/images/Toronto-Canada-morning-city_1920x1200.jpeg', alt: 'Toronto-Canada' },
-  { src: '/images/Transformers-Optimus-Prime-truck_3840x2160.jpeg', alt: 'Transformers-Optimus-Prime' },
-  { src: '/images/Trees-rock-mountain-top-sunshine_1920x1200.jpeg', alt: 'Trees-rock-mountain' }
+  { src: '/beauty/images/2.jpeg', alt: '2.jpeg' },
+  { src: '/beauty/images/Girl-play-swing-silhouette-tree-sea-sun_1920x1200.jpeg', alt: 'Girl-play-swing' },
+  { src: '/beauty/images/newcity.jpeg', alt: 'newcity' },
+  { src: '/beauty/images/Red-tulips-flowers-macro-photography_1920x1200.jpeg', alt: 'Red-tulips' },
+  { src: '/beauty/images/Russia-temple-river-trees-sunset_1920x1200.jpeg', alt: 'Russia-temple' },
+  { src: '/beauty/images/San-Marino-tower-monument-statue-sunshine_1920x1200.jpeg', alt: 'San-Marino-tower' },
+  { src: '/beauty/images/Spain-Asturias-mountains-lake-clouds-morning_1920x1200.jpeg', alt: 'Spain-Asturias' },
+  { src: '/beauty/images/Spain-Barcelona-interior-people_1920x1200.jpeg', alt: 'Spain-Barcelona' },
+  { src: '/beauty/images/Starfish-sea-beach-foam-sun_3840x2160.jpeg', alt: 'Starfish-sea' },
+  { src: '/beauty/images/Three-white-puppies-Labrador-Retriever_1920x1200.jpeg', alt: 'Three-white-puppies' },
+  { src: '/beauty/images/Toronto-Canada-morning-city_1920x1200.jpeg', alt: 'Toronto-Canada' },
+  { src: '/beauty/images/Transformers-Optimus-Prime-truck_3840x2160.jpeg', alt: 'Transformers-Optimus-Prime' },
+  { src: '/beauty/images/Trees-rock-mountain-top-sunshine_1920x1200.jpeg', alt: 'Trees-rock-mountain' }
 ]
 
 const openSwiper = (index) => {
