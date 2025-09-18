@@ -8,13 +8,19 @@ layout: home
 ---
 
 <div class="beauty-img-grid">
-  <img 
-    v-for="(image, index) in images" 
-    :key="index"
-    :src="image.src" 
-    :alt="image.alt" 
-    @click="openSwiper(index)" 
-  />
+  <img src="/images/2.jpeg" alt="2.jpeg" @click="openSwiper" />
+  <img src="/images/Girl-play-swing-silhouette-tree-sea-sun_1920x1200.jpeg" alt="Girl-play-swing" @click="openSwiper" />
+  <img src="/images/newcity.jpeg" alt="newcity" @click="openSwiper" />
+  <img src="/images/Red-tulips-flowers-macro-photography_1920x1200.jpeg" alt="Red-tulips" @click="openSwiper" />
+  <img src="/images/Russia-temple-river-trees-sunset_1920x1200.jpeg" alt="Russia-temple" @click="openSwiper" />
+  <img src="/images/San-Marino-tower-monument-statue-sunshine_1920x1200.jpeg" alt="San-Marino-tower" @click="openSwiper" />
+  <img src="/images/Spain-Asturias-mountains-lake-clouds-morning_1920x1200.jpeg" alt="Spain-Asturias" @click="openSwiper" />
+  <img src="/images/Spain-Barcelona-interior-people_1920x1200.jpeg" alt="Spain-Barcelona" @click="openSwiper" />
+  <img src="/images/Starfish-sea-beach-foam-sun_3840x2160.jpeg" alt="Starfish-sea" @click="openSwiper" />
+  <img src="/images/Three-white-puppies-Labrador-Retriever_1920x1200.jpeg" alt="Three-white-puppies" @click="openSwiper" />
+  <img src="/images/Toronto-Canada-morning-city_1920x1200.jpeg" alt="Toronto-Canada" @click="openSwiper" />
+  <img src="/images/Transformers-Optimus-Prime-truck_3840x2160.jpeg" alt="Transformers-Optimus-Prime" @click="openSwiper" />
+  <img src="/images/Trees-rock-mountain-top-sunshine_1920x1200.jpeg" alt="Trees-rock-mountain" @click="openSwiper" />
 </div>
 
 <!-- 轮播模态框 -->
@@ -47,30 +53,34 @@ layout: home
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { withBase } from 'vitepress'
 
 const showSwiper = ref(false)
 const currentImageIndex = ref(0)
 const currentSlideIndex = ref(0)
+const images = ref([])
 let swiperInstance = null
 
-const images = [
-  { src: withBase('/images/2.jpeg'), alt: '2.jpeg' },
-  { src: withBase('/images/Girl-play-swing-silhouette-tree-sea-sun_1920x1200.jpeg'), alt: 'Girl-play-swing' },
-  { src: withBase('/images/newcity.jpeg'), alt: 'newcity' },
-  { src: withBase('/images/Red-tulips-flowers-macro-photography_1920x1200.jpeg'), alt: 'Red-tulips' },
-  { src: withBase('/images/Russia-temple-river-trees-sunset_1920x1200.jpeg'), alt: 'Russia-temple' },
-  { src: withBase('/images/San-Marino-tower-monument-statue-sunshine_1920x1200.jpeg'), alt: 'San-Marino-tower' },
-  { src: withBase('/images/Spain-Asturias-mountains-lake-clouds-morning_1920x1200.jpeg'), alt: 'Spain-Asturias' },
-  { src: withBase('/images/Spain-Barcelona-interior-people_1920x1200.jpeg'), alt: 'Spain-Barcelona' },
-  { src: withBase('/images/Starfish-sea-beach-foam-sun_3840x2160.jpeg'), alt: 'Starfish-sea' },
-  { src: withBase('/images/Three-white-puppies-Labrador-Retriever_1920x1200.jpeg'), alt: 'Three-white-puppies' },
-  { src: withBase('/images/Toronto-Canada-morning-city_1920x1200.jpeg'), alt: 'Toronto-Canada' },
-  { src: withBase('/images/Transformers-Optimus-Prime-truck_3840x2160.jpeg'), alt: 'Transformers-Optimus-Prime' },
-  { src: withBase('/images/Trees-rock-mountain-top-sunshine_1920x1200.jpeg'), alt: 'Trees-rock-mountain' }
-]
+// 动态获取图片信息
+const getImagesFromDOM = () => {
+  const imgElements = document.querySelectorAll('.beauty-img-grid img')
+  const imageList = []
+  
+  imgElements.forEach((img) => {
+    imageList.push({
+      src: img.src,
+      alt: img.alt || ''
+    })
+  })
+  
+  images.value = imageList
+}
 
-const openSwiper = (index) => {
+const openSwiper = (event) => {
+  // 获取被点击的图片索引
+  const clickedImg = event.target
+  const imgElements = document.querySelectorAll('.beauty-img-grid img')
+  const index = Array.from(imgElements).indexOf(clickedImg)
+  
   currentImageIndex.value = index
   currentSlideIndex.value = index
   showSwiper.value = true
@@ -130,6 +140,8 @@ const onSlideChange = (swiper) => {
 
 // 组件生命周期
 onMounted(() => {
+  // 页面渲染完成后获取图片信息
+  getImagesFromDOM()
   document.addEventListener('keydown', handleKeydown)
 })
 
