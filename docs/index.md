@@ -27,15 +27,19 @@ layout: home
 <div v-if="showSwiper" class="swiper-modal" @click="closeSwiper">
   <div class="swiper-modal-content" @click.stop>
     <button class="swiper-close" @click="closeSwiper">×</button>
+    <div class="swiper-counter">{{ currentSlideIndex + 1 }} / {{ images.length }}</div>
     <div class="beauty-swiper">
       <Swiper
         :modules="[Navigation, Pagination, Autoplay]"
         :slides-per-view="1"
-        :space-between="30"
+        :space-between="0"
         :navigation="true"
         :pagination="{ clickable: true }"
         :initial-slide="currentImageIndex"
         :loop="true"
+        :keyboard="{ enabled: true }"
+        @swiper="onSwiperInit"
+        @slideChange="onSlideChange"
         class="swiper-container"
       >
         <SwiperSlide v-for="(image, index) in images" :key="index">
@@ -47,11 +51,13 @@ layout: home
 </div>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 const showSwiper = ref(false)
 const currentImageIndex = ref(0)
+const currentSlideIndex = ref(0)
+let swiperInstance = null
 
 const images = [
   { src: '/images/2.jpeg', alt: '2.jpeg' },
@@ -71,6 +77,7 @@ const images = [
 
 const openSwiper = (index) => {
   currentImageIndex.value = index
+  currentSlideIndex.value = index
   showSwiper.value = true
   // 防止背景滚动
   document.body.style.overflow = 'hidden'
@@ -78,7 +85,60 @@ const openSwiper = (index) => {
 
 const closeSwiper = () => {
   showSwiper.value = false
+  swiperInstance = null
   // 恢复背景滚动
   document.body.style.overflow = 'auto'
 }
+
+// 键盘事件处理
+const handleKeydown = (event) => {
+  if (!showSwiper.value) return
+  
+  switch (event.key) {
+    case 'Escape':
+      closeSwiper()
+      break
+    case 'ArrowLeft':
+      if (swiperInstance) {
+        swiperInstance.slidePrev()
+      }
+      break
+    case 'ArrowRight':
+      if (swiperInstance) {
+        swiperInstance.slideNext()
+      }
+      break
+    case 'ArrowUp':
+      event.preventDefault()
+      if (swiperInstance) {
+        swiperInstance.slidePrev()
+      }
+      break
+    case 'ArrowDown':
+      event.preventDefault()
+      if (swiperInstance) {
+        swiperInstance.slideNext()
+      }
+      break
+  }
+}
+
+// Swiper实例初始化
+const onSwiperInit = (swiper) => {
+  swiperInstance = swiper
+}
+
+// 幻灯片变化事件
+const onSlideChange = (swiper) => {
+  currentSlideIndex.value = swiper.realIndex
+}
+
+// 组件生命周期
+onMounted(() => {
+  document.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleKeydown)
+})
 </script>
