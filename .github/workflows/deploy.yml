@@ -48,7 +48,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile # 使用 pnpm 而不是 npm ci
+        run: pnpm install
 
       - name: Build with VitePress
         run: pnpm docs:build # 使用 pnpm 运行构建命令
