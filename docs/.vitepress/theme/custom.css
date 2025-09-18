@@ -1,0 +1,29 @@
+.beauty-img-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.container[data-v-3338b8c6]{
+    padding: 0px 0px;
+    margin: 0px 0px;
+    max-width: 100%;
+}
+@media (max-width: 1280px) {
+  .beauty-img-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 960px) {
+  .beauty-img-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .beauty-img-grid {
+    grid-template-columns: 1fr;
+  }
+}
