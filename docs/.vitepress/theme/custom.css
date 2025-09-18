@@ -27,3 +27,6 @@
     grid-template-columns: 1fr;
   }
 }
+.container[data-v-d70c61be]{
+  max-width: 100%;
+}
