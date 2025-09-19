@@ -29,7 +29,7 @@ export default {
     return h(DefaultTheme.Layout, null, {
 
       // 指定组件使用home-features-after插槽
-      // 'home-features-after': () => h(HomeSponsors),
+      'home-features-after': () => h(HomeSponsors),
 
     })
   }
