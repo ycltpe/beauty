@@ -8,19 +8,19 @@ layout: home
 ---
 
 <div class="beauty-img-grid">
-  <img src="/images/2.jpeg" alt="2.jpeg" @click="openSwiper" />
-  <img src="/images/Girl-play-swing-silhouette-tree-sea-sun_1920x1200.jpeg" alt="Girl-play-swing" @click="openSwiper" />
-  <img src="/images/newcity.jpeg" alt="newcity" @click="openSwiper" />
-  <img src="/images/Red-tulips-flowers-macro-photography_1920x1200.jpeg" alt="Red-tulips" @click="openSwiper" />
-  <img src="/images/Russia-temple-river-trees-sunset_1920x1200.jpeg" alt="Russia-temple" @click="openSwiper" />
-  <img src="/images/San-Marino-tower-monument-statue-sunshine_1920x1200.jpeg" alt="San-Marino-tower" @click="openSwiper" />
-  <img src="/images/Spain-Asturias-mountains-lake-clouds-morning_1920x1200.jpeg" alt="Spain-Asturias" @click="openSwiper" />
-  <img src="/images/Spain-Barcelona-interior-people_1920x1200.jpeg" alt="Spain-Barcelona" @click="openSwiper" />
-  <img src="/images/Starfish-sea-beach-foam-sun_3840x2160.jpeg" alt="Starfish-sea" @click="openSwiper" />
-  <img src="/images/Three-white-puppies-Labrador-Retriever_1920x1200.jpeg" alt="Three-white-puppies" @click="openSwiper" />
-  <img src="/images/Toronto-Canada-morning-city_1920x1200.jpeg" alt="Toronto-Canada" @click="openSwiper" />
-  <img src="/images/Transformers-Optimus-Prime-truck_3840x2160.jpeg" alt="Transformers-Optimus-Prime" @click="openSwiper" />
-  <img src="/images/Trees-rock-mountain-top-sunshine_1920x1200.jpeg" alt="Trees-rock-mountain" @click="openSwiper" />
+  <img src="/public/images/2.jpeg" alt="2.jpeg" @click="openSwiper" />
+  <img src="/public/images/Girl-play-swing-silhouette-tree-sea-sun_1920x1200.jpeg" alt="Girl-play-swing" @click="openSwiper" />
+  <img src="/public/images/newcity.jpeg" alt="newcity" @click="openSwiper" />
+  <img src="/public/images/Red-tulips-flowers-macro-photography_1920x1200.jpeg" alt="Red-tulips" @click="openSwiper" />
+  <img src="/public/images/Russia-temple-river-trees-sunset_1920x1200.jpeg" alt="Russia-temple" @click="openSwiper" />
+  <img src="/public/images/San-Marino-tower-monument-statue-sunshine_1920x1200.jpeg" alt="San-Marino-tower" @click="openSwiper" />
+  <img src="/public/images/Spain-Asturias-mountains-lake-clouds-morning_1920x1200.jpeg" alt="Spain-Asturias" @click="openSwiper" />
+  <img src="/public/images/Spain-Barcelona-interior-people_1920x1200.jpeg" alt="Spain-Barcelona" @click="openSwiper" />
+  <img src="/public/images/Starfish-sea-beach-foam-sun_3840x2160.jpeg" alt="Starfish-sea" @click="openSwiper" />
+  <img src="/public/images/Three-white-puppies-Labrador-Retriever_1920x1200.jpeg" alt="Three-white-puppies" @click="openSwiper" />
+  <img src="/public/images/Toronto-Canada-morning-city_1920x1200.jpeg" alt="Toronto-Canada" @click="openSwiper" />
+  <img src="/public/images/Transformers-Optimus-Prime-truck_3840x2160.jpeg" alt="Transformers-Optimus-Prime" @click="openSwiper" />
+  <img src="/public/images/Trees-rock-mountain-top-sunshine_1920x1200.jpeg" alt="Trees-rock-mountain" @click="openSwiper" />
 </div>
 
 <!-- 轮播模态框 -->
