@@ -8,19 +8,13 @@ layout: home
 ---
 
 <div class="beauty-img-grid">
-  <img src="/public/images/2.jpeg" alt="2.jpeg" @click="openSwiper" />
-  <img src="/public/images/Girl-play-swing-silhouette-tree-sea-sun_1920x1200.jpeg" alt="Girl-play-swing" @click="openSwiper" />
-  <img src="/public/images/newcity.jpeg" alt="newcity" @click="openSwiper" />
-  <img src="/public/images/Red-tulips-flowers-macro-photography_1920x1200.jpeg" alt="Red-tulips" @click="openSwiper" />
-  <img src="/public/images/Russia-temple-river-trees-sunset_1920x1200.jpeg" alt="Russia-temple" @click="openSwiper" />
-  <img src="/public/images/San-Marino-tower-monument-statue-sunshine_1920x1200.jpeg" alt="San-Marino-tower" @click="openSwiper" />
-  <img src="/public/images/Spain-Asturias-mountains-lake-clouds-morning_1920x1200.jpeg" alt="Spain-Asturias" @click="openSwiper" />
-  <img src="/public/images/Spain-Barcelona-interior-people_1920x1200.jpeg" alt="Spain-Barcelona" @click="openSwiper" />
-  <img src="/public/images/Starfish-sea-beach-foam-sun_3840x2160.jpeg" alt="Starfish-sea" @click="openSwiper" />
-  <img src="/public/images/Three-white-puppies-Labrador-Retriever_1920x1200.jpeg" alt="Three-white-puppies" @click="openSwiper" />
-  <img src="/public/images/Toronto-Canada-morning-city_1920x1200.jpeg" alt="Toronto-Canada" @click="openSwiper" />
-  <img src="/public/images/Transformers-Optimus-Prime-truck_3840x2160.jpeg" alt="Transformers-Optimus-Prime" @click="openSwiper" />
-  <img src="/public/images/Trees-rock-mountain-top-sunshine_1920x1200.jpeg" alt="Trees-rock-mountain" @click="openSwiper" />
+  <img
+    v-for="(src, idx) in imageUrls"
+    :key="idx"
+    :src="withBase(src)"
+    :alt="src.split('/').pop() || ''"
+    @click="openSwiper"
+  />
 </div>
 
 <!-- 轮播模态框 -->
@@ -52,6 +46,8 @@ layout: home
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { withBase } from 'vitepress'
+import imageUrls from 'virtual:images'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 const showSwiper = ref(false)
@@ -60,19 +56,13 @@ const currentSlideIndex = ref(0)
 const images = ref([])
 let swiperInstance = null
 
-// 动态获取图片信息
+// 从虚拟模块获取图片列表
 const getImagesFromDOM = () => {
-  const imgElements = document.querySelectorAll('.beauty-img-grid img')
-  const imageList = []
-  
-  imgElements.forEach((img) => {
-    imageList.push({
-      src: img.src,
-      alt: img.alt || ''
-    })
-  })
-  
-  images.value = imageList
+  const list = imageUrls.map((url) => ({
+    src: withBase(url),
+    alt: url.split('/').pop() || ''
+  }))
+  images.value = list
 }
 
 const openSwiper = (event) => {
