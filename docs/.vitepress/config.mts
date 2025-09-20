@@ -38,7 +38,7 @@ function virtualImagesPlugin() {
 export default defineConfig({
   title: "Beauty",
   description: "An improvement in the quality of life",
-  base: '/beauty/',
+  // base: '/beauty/',
   vite: {
     plugins: [virtualImagesPlugin()]
   },
