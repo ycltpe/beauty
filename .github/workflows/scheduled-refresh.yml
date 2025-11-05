@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  refresh-and-deploy:
+  build:
     runs-on: ubuntu-latest
     environment: wg
     steps:
