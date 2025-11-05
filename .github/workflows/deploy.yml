@@ -4,7 +4,7 @@ name: Deploy VitePress to Pages
 on:
   # 在推送到主分支时触发
   push:
-    branches: [main]
+    branches: main
   # 允许手动触发
   workflow_dispatch:
 
